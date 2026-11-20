@@ -1,0 +1,74 @@
+Перенос S3: 12.11.2026. Повторное чтение и проверка объектов: 14.11.2026.
+RustFS 1.0.1, EC 2+2, Service rustfs:9000, PVC rustfs-data.
+Перенесено 27 объектов, 1741825750 байт. Для каждой строки ниже SHA-256 до и после совпадает:
+s3://it-vacancies/checks.json | 162 bytes | SHA-256 1747cbf6bb8ee5943f83b8b58b1542db897f1250204f8322afb531d608f514ba
+s3://it-vacancies/ec-probe.json | 2148971 bytes | SHA-256 e0324edd8817825e763c8e68cefdbc498c4cc39220c5ea0499652bb05dfa5c19
+s3://it-vacancies/experiment.json | 107 bytes | SHA-256 ada68acde28796d027297a1028e54a523f1f8103c4326870ed56ca2384545789
+s3://it-vacancies/failure-tests/baseline.json | 2148971 bytes | SHA-256 e0324edd8817825e763c8e68cefdbc498c4cc39220c5ea0499652bb05dfa5c19
+s3://it-vacancies/failure-tests/one-disk.json | 2148971 bytes | SHA-256 e0324edd8817825e763c8e68cefdbc498c4cc39220c5ea0499652bb05dfa5c19
+s3://it-vacancies/failure-tests/restored-after-three.json | 2148971 bytes | SHA-256 e0324edd8817825e763c8e68cefdbc498c4cc39220c5ea0499652bb05dfa5c19
+s3://it-vacancies/failure-tests/restored-after-two.json | 2148971 bytes | SHA-256 e0324edd8817825e763c8e68cefdbc498c4cc39220c5ea0499652bb05dfa5c19
+s3://it-vacancies/it_vacancies_2024.csv | 847619384 bytes | SHA-256 303db922b541e4440906f5a7e8be32fb55e8808f950ffddb8c272f1548212a65
+s3://hh-lake/raw/it_vacancies_2024.csv | 847619384 bytes | SHA-256 303db922b541e4440906f5a7e8be32fb55e8808f950ffddb8c272f1548212a65
+s3://hh-lake/results/python-simple/duckdb/skills_1.csv | 25715 bytes | SHA-256 f964c95b3557ae86084b1f19dc6c7c223fd82ccfced27ecd0bd9db98ea7dcfce
+s3://hh-lake/results/python-simple/duckdb/skills_2.csv | 520083 bytes | SHA-256 f81acce1a87988f6cac84887e50b04cd27316edfefb158e155407f62b71a4956
+s3://hh-lake/results/python-simple/duckdb/skills_3.csv | 4395827 bytes | SHA-256 42391e163356805974746c7c8b12bcd1f6c985df56ed358023922ce1c7c8ba2a
+s3://hh-lake/results/python-simple/normal/skills_1.csv | 25715 bytes | SHA-256 f964c95b3557ae86084b1f19dc6c7c223fd82ccfced27ecd0bd9db98ea7dcfce
+s3://hh-lake/results/python-simple/normal/skills_2.csv | 520083 bytes | SHA-256 f81acce1a87988f6cac84887e50b04cd27316edfefb158e155407f62b71a4956
+s3://hh-lake/results/python-simple/normal/skills_3.csv | 4395827 bytes | SHA-256 42391e163356805974746c7c8b12bcd1f6c985df56ed358023922ce1c7c8ba2a
+s3://hh-lake/results/python-simple/optimized/skills_1.csv | 25715 bytes | SHA-256 f964c95b3557ae86084b1f19dc6c7c223fd82ccfced27ecd0bd9db98ea7dcfce
+s3://hh-lake/results/python-simple/optimized/skills_2.csv | 520083 bytes | SHA-256 f81acce1a87988f6cac84887e50b04cd27316edfefb158e155407f62b71a4956
+s3://hh-lake/results/python-simple/optimized/skills_3.csv | 4395827 bytes | SHA-256 42391e163356805974746c7c8b12bcd1f6c985df56ed358023922ce1c7c8ba2a
+s3://hh-lake/results/python/duckdb/stack_1.csv | 35839 bytes | SHA-256 420da90f8397970a08c320e741828cd05665def0c6af39967741c3dc6a664fe0
+s3://hh-lake/results/python/duckdb/stack_2.csv | 733489 bytes | SHA-256 d764e75333f8aaae62c4a8dbaec89863baa85d40b323259adda9ec4191104409
+s3://hh-lake/results/python/duckdb/stack_3.csv | 6236333 bytes | SHA-256 2b0ad63576ca7a538d70569c4b5f07c0e9e9b19ce862684e8cd262983b9da36c
+s3://hh-lake/results/python/mapreduce/stack_1.csv | 35839 bytes | SHA-256 420da90f8397970a08c320e741828cd05665def0c6af39967741c3dc6a664fe0
+s3://hh-lake/results/python/mapreduce/stack_2.csv | 733489 bytes | SHA-256 d764e75333f8aaae62c4a8dbaec89863baa85d40b323259adda9ec4191104409
+s3://hh-lake/results/python/mapreduce/stack_3.csv | 6236333 bytes | SHA-256 2b0ad63576ca7a538d70569c4b5f07c0e9e9b19ce862684e8cd262983b9da36c
+s3://hh-lake/results/python/mapreduce_optimized/stack_1.csv | 35839 bytes | SHA-256 420da90f8397970a08c320e741828cd05665def0c6af39967741c3dc6a664fe0
+s3://hh-lake/results/python/mapreduce_optimized/stack_2.csv | 733489 bytes | SHA-256 d764e75333f8aaae62c4a8dbaec89863baa85d40b323259adda9ec4191104409
+s3://hh-lake/results/python/mapreduce_optimized/stack_3.csv | 6236333 bytes | SHA-256 2b0ad63576ca7a538d70569c4b5f07c0e9e9b19ce862684e8cd262983b9da36c
+
+PASS: 27 migrated objects and merged pairs verified after RustFS Pod restart
+PASS: all 27 migrated objects still match their original SHA-256
+
+Разбиение CSV 14.11.2026:
+2026-11-14T13:46:23.065839750Z {"part_rows": [60000, 60000, 60000, 49388], "total": 229388}
+
+Pod: simple-parallel-0-77dpf | UID: 19fd804d-3cc1-4de7-b371-59397d40fd9d
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=256Mi
+limits: cpu=1, memory=256Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:46:28Z - 2026-11-14T13:46:33Z
+2026-11-14T13:46:33.577019588Z {"source_rows": 60000, "vacancies": 885, "seconds": 5.206, "unique_pairs": 5553, "pair_occurrences": 17292, "peak_bytes": 154845184}
+
+Pod: simple-parallel-1-h9bfr | UID: bce605ef-6db2-466c-892b-5e8f3ecf96f3
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=256Mi
+limits: cpu=1, memory=256Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:46:28Z - 2026-11-14T13:46:33Z
+2026-11-14T13:46:33.573243755Z {"source_rows": 60000, "vacancies": 1035, "seconds": 5.125, "unique_pairs": 7226, "pair_occurrences": 17920, "peak_bytes": 154259456}
+
+Pod: simple-parallel-2-77dr5 | UID: 528f00f9-e9a0-4d4e-a254-81db482b199b
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=256Mi
+limits: cpu=1, memory=256Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:46:28Z - 2026-11-14T13:46:33Z
+2026-11-14T13:46:33.460404088Z {"source_rows": 60000, "vacancies": 1112, "seconds": 5.028, "unique_pairs": 8113, "pair_occurrences": 26566, "peak_bytes": 154128384}
+
+Pod: simple-parallel-3-7h7xg | UID: 00c505c2-e9e3-4c61-b2cc-bbbb2fa44cc9
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=256Mi
+limits: cpu=1, memory=256Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:46:28Z - 2026-11-14T13:46:33Z
+2026-11-14T13:46:32.927644963Z {"source_rows": 49388, "vacancies": 862, "seconds": 4.451, "unique_pairs": 7708, "pair_occurrences": 19566, "peak_bytes": 154333184}
+
+Все четыре пода одновременно работали: 2026-11-14T13:46:28Z - 2026-11-14T13:46:33Z
+
+Слияние:
+Pod: simple-merge-ccmw7 | UID: 487a7c11-5aaa-43bd-81d0-720c202f2f8f
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=128Mi
+limits: cpu=1, memory=128Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:46:37Z - 2026-11-14T13:46:38Z
+2026-11-14T13:46:38.071815049Z {"source_rows": 229388, "vacancies": 3894, "unique_pairs": 17801, "pair_occurrences": 81344, "peak_bytes": 51646464}

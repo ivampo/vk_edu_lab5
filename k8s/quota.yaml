@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lab5-quota
+  labels:
+    stage: setup
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute
+  namespace: lab5-quota
+  labels:
+    stage: setup
+spec:
+  hard:
+    requests.cpu: '1'
+    limits.cpu: '1'
+    requests.memory: 128Mi
+    limits.memory: 256Mi
+    pods: '2'
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quota-a
+  namespace: lab5-quota
+  labels:
+    stage: quota-a
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 3
+  containers:
+  - name: hold
+    image: vk-lab5-simple:1
+    imagePullPolicy: Never
+    command:
+    - python
+    - -u
+    - -c
+    - import time; print("holding CPU request", flush=True); time.sleep(3600)
+    resources:
+      requests:
+        cpu: 700m
+        memory: 32Mi
+      limits:
+        cpu: 700m
+        memory: 64Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: quota-b
+  namespace: lab5-quota
+  labels:
+    stage: quota-b
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 3
+  containers:
+  - name: hold
+    image: vk-lab5-simple:1
+    imagePullPolicy: Never
+    command:
+    - python
+    - -u
+    - -c
+    - import time; print("holding CPU request", flush=True); time.sleep(3600)
+    resources:
+      requests:
+        cpu: 700m
+        memory: 32Mi
+      limits:
+        cpu: 700m
+        memory: 64Mi

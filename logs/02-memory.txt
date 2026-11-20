@@ -1,0 +1,31 @@
+Pod: simple-oom-fmjxn | UID: 3c3336b6-c266-4d19-921f-a00a28b3a223
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=64Mi
+limits: cpu=1, memory=64Mi
+state: OOMKilled | exitCode: 137 | 2026-11-14T13:44:14Z - 2026-11-14T13:44:14Z
+
+Pod: simple-measure-j4r6x | UID: 3c09ff3b-b90e-4a22-9787-f3180d6d2c23
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=1536Mi
+limits: cpu=1, memory=1536Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:44:18Z - 2026-11-14T13:44:32Z
+stdout:
+2026-11-14T13:44:32.581725713Z {"source_rows": 229388, "vacancies": 3894, "seconds": 13.301, "unique_pairs": 17801, "pair_occurrences": 81344, "peak_bytes": 622526464}
+
+Pod: simple-tuned-qvs6f | UID: a447ec74-ae2d-4e97-ae9b-abc5a8b95f54
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=768Mi
+limits: cpu=1, memory=768Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:45:40Z - 2026-11-14T13:45:53Z
+stdout:
+2026-11-14T13:45:53.110372125Z {"source_rows": 229388, "vacancies": 3894, "seconds": 11.98, "unique_pairs": 17801, "pair_occurrences": 81344, "peak_bytes": 805306368}
+
+Pod: simple-single-wsdkq | UID: 9af778e0-eed8-445b-9ada-f18af9be4b0c
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=500m, memory=512Mi
+limits: cpu=1, memory=512Mi
+state: Completed | exitCode: 0 | 2026-11-14T13:44:50Z - 2026-11-14T13:45:03Z
+stdout:
+2026-11-14T13:45:03.520474880Z {"source_rows": 229388, "vacancies": 3894, "seconds": 12.436, "unique_pairs": 17801, "pair_occurrences": 81344, "peak_bytes": 171433984}
+
+Подбор: 593.6875 МиБ × 1.20 = 712.425 МиБ; округление вверх до шага 128 МиБ → 768Mi.

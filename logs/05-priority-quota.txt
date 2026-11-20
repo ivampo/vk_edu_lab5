@@ -1,0 +1,30 @@
+  PriorityClass: lab5-low=100; lab5-high=1000; preemptionPolicy=PreemptLowerPriority.
+Сначала работал low:
+Pod: low | UID: b69ff31d-4568-493b-9e1c-c4f9f43752dc
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=2700m, memory=32Mi
+limits: cpu=2700m, memory=64Mi
+phase: Running | created: 2026-11-14T13:46:51Z
+
+Затем создан high:
+Pod: high | UID: 83d4aef0-3c03-4fbd-aecf-3f84c053a3e1
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=2700m, memory=32Mi
+limits: cpu=2700m, memory=64Mi
+phase: Running | created: 2026-11-14T13:46:52Z
+
+Event: 2026-11-14T13:46:52.972495Z | source: default-scheduler | reason: Preempted
+victim: low, UID b69ff31d-4568-493b-9e1c-c4f9f43752dc
+Preempted by pod 83d4aef0-3c03-4fbd-aecf-3f84c053a3e1 on node vk-lab5-control-plane
+UID инициатора совпадает с UID high.
+
+Квота namespace lab5-quota: requests.cpu=1, limits.cpu=1, requests.memory=128Mi, limits.memory=256Mi, pods=2.
+После принятия quota-a запрос quota-b отклонён:
+Error from server (Forbidden): error when creating "k8s/quota-b.yaml": pods "quota-b" is forbidden: exceeded quota: compute, requested: limits.cpu=700m,requests.cpu=700m, used: limits.cpu=700m,requests.cpu=700m, limited: limits.cpu=1,requests.cpu=1
+
+После удаления quota-a тот же quota-b создан и запущен:
+Pod: quota-b | UID: e1bd804d-e206-4b37-9a4f-708987214bd1
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=700m, memory=32Mi
+limits: cpu=700m, memory=64Mi
+phase: Running | created: 2026-11-14T13:47:11Z

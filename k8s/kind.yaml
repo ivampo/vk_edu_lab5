@@ -1,0 +1,9 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: vk-lab5
+nodes:
+- role: control-plane
+  extraMounts:
+  - hostPath: /Users/user/Downloads/it_vacancies_2024.csv
+    containerPath: /lab-input/it_vacancies_2024.csv
+    readOnly: true

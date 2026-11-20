@@ -1,0 +1,17 @@
+CPU узла: 4; системные requests: 950m; RustFS: 200m; cpu-holder: 2700m. Остаток: 150m.
+cpu-waiter запрашивает 1000m.
+
+Name:             cpu-waiter
+Namespace:        lab5
+Priority:         0
+Node:             <none>
+Status:           Pending
+  PodScheduled   False 
+  Warning  FailedScheduling  0s    default-scheduler  0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 No preemption victims found for incoming pod.
+
+После удаления cpu-holder:
+Pod: cpu-waiter | UID: 782d0bb2-fb11-43b4-b91d-4fdced137aba
+imageID: sha256:8abcbf34a7fe9592ffde80962dd71a634f2379c7e5b9a0ced1e3dfcf5f4072f8
+requests: cpu=1, memory=32Mi
+limits: cpu=1, memory=64Mi
+phase: Running | created: 2026-11-14T13:46:41Z

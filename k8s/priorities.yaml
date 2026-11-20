@@ -1,0 +1,75 @@
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: lab5-low
+  labels:
+    stage: setup
+value: 100
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: lab5-high
+  labels:
+    stage: setup
+value: 1000
+globalDefault: false
+preemptionPolicy: PreemptLowerPriority
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: low
+  namespace: lab5
+  labels:
+    stage: low
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 3
+  containers:
+  - name: hold
+    image: vk-lab5-simple:1
+    imagePullPolicy: Never
+    command:
+    - python
+    - -u
+    - -c
+    - import time; print("holding CPU request", flush=True); time.sleep(3600)
+    resources:
+      requests:
+        cpu: 2700m
+        memory: 32Mi
+      limits:
+        cpu: 2700m
+        memory: 64Mi
+  priorityClassName: lab5-low
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: high
+  namespace: lab5
+  labels:
+    stage: high
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 3
+  containers:
+  - name: hold
+    image: vk-lab5-simple:1
+    imagePullPolicy: Never
+    command:
+    - python
+    - -u
+    - -c
+    - import time; print("holding CPU request", flush=True); time.sleep(3600)
+    resources:
+      requests:
+        cpu: 2700m
+        memory: 32Mi
+      limits:
+        cpu: 2700m
+        memory: 64Mi
+  priorityClassName: lab5-high
